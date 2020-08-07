@@ -5,6 +5,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.FurnaceRecipe;
+import org.bukkit.inventory.BlastingRecipe;
+import org.bukkit.NamespacedKey;
 
 public class App extends JavaPlugin {
     private static JavaPlugin plugin;
@@ -16,7 +18,9 @@ public class App extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new BlockBreak(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new AnvilCraft(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new Fishing(), this);
-        Bukkit.getServer().addRecipe(new FurnaceRecipe(new ItemStack(Material.GOLD_NUGGET), Material.GOLD_ORE));
+        Bukkit.getServer().getPluginManager().registerEvents(new FurnaceUsed(), this);
+        Bukkit.getServer().addRecipe(new FurnaceRecipe(new NamespacedKey(App.plugin, "furnacesmeltgoldore"), new ItemStack(Material.GOLD_NUGGET), Material.GOLD_ORE, 1, 200));
+        Bukkit.getServer().addRecipe(new BlastingRecipe(new NamespacedKey(App.plugin, "blastingsmeltgoldore"), new ItemStack(Material.GOLD_NUGGET), Material.GOLD_ORE, 1, 100));
     }
     @Override
     public void onDisable() {

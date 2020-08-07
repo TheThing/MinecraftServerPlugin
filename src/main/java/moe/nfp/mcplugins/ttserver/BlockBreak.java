@@ -16,28 +16,14 @@ public class BlockBreak implements Listener {
   public void onBreak(BlockBreakEvent event){
     Block block = event.getBlock();
 
-    if(block.getType() == Material.GOLD_ORE){
-      /*ItemStack mainHand = event.getPlayer().getInventory().getItemInMainHand();
-      if (mainHand.containsEnchantment(Enchantment.SILK_TOUCH)) {
-        block.breakNaturally();
-        return;
-      }
-      int bonus = getBonusEnchantment(event);
-
-      block.setType(Material.AIR);
-      event.setCancelled(true);
-      ItemMeta meta = mainHand.getItemMeta();
-      if (meta != null) {
-        ((Damageable)meta).setDamage(((Damageable)meta).getDamage() + 1);
-        mainHand.setItemMeta(meta);
-      }
-      block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.GOLD_NUGGET, 1 + bonus));*/
-    }
-    else if(block.getType() == Material.DIAMOND_ORE) {
+    if(block.getType() == Material.DIAMOND_ORE) {
       ItemStack mainHand = event.getPlayer().getInventory().getItemInMainHand();
 
+      event.setCancelled(true);
+      block.setType(Material.AIR);
+
       if (mainHand.containsEnchantment(Enchantment.SILK_TOUCH)) {
-        block.breakNaturally();
+        block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.DIAMOND_ORE, 1));
         return;
       }
 
@@ -51,8 +37,6 @@ public class BlockBreak implements Listener {
         isGoldPick = true;
       }
 
-      event.setCancelled(true);
-      block.setType(Material.AIR);
       ItemMeta meta = mainHand.getItemMeta();
       if (meta != null) {
         ((Damageable)meta).setDamage(((Damageable)meta).getDamage() + 1);

@@ -1,6 +1,6 @@
 main: moe.nfp.mcplugins.ttserver.App
 name: TTServerPlugin
-version: 1.0.1.1
+version: 1.0.2.0
 api-version: 1.16
 load: POSTWORLD
 depend: [NBTAPI]

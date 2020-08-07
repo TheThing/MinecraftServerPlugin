@@ -1,13 +1,11 @@
 package moe.nfp.mcplugins.ttserver;
 
-import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.InventoryView.Property;
 import org.bukkit.event.inventory.PrepareAnvilEvent;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import de.tr7zw.nbtapi.NBTCompound;
 import de.tr7zw.nbtapi.NBTItem;
@@ -30,7 +28,7 @@ public class AnvilCraft implements Listener {
             if (tags.hasKey("RepairCost") && tags.getInteger("RepairCost") > 100) {
               tags.setInteger("RepairCost", 1000);
               e.getInventory().setItem(id, n.getItem());
-            }	
+            }
           }
         }
       }
